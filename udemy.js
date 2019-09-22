@@ -19,22 +19,22 @@
 // --------------------------------------------------------------------------------
 function printNumbersThenPairSums(numbers) {
     console.log('Numbers in array:');
-        numbers.forEach(function(number) {
-            console.log(number);
-            console.log('!!!!!!!!!!!!!!!!!!!!!!!!')
-        });
+    numbers.forEach(function (number) {
+        console.log(number);
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!')
+    });
 
-        console.log('Sums of the Number:');
-        numbers.forEach(function(firstNumber) {
-            console.log('This is the 1st: ' + firstNumber); // loops through numbers and grabs the first index of the array
-            numbers.forEach(function(secondNumber) {
-                console.log('This is the 2nd: ' + secondNumber); // then loops through the whole array starting at first index
-                console.log('Sum of 1st + 2nd: ' + (firstNumber + secondNumber))
-                console.log('------------------------------------------------')
-            })
+    console.log('Sums of the Number:');
+    numbers.forEach(function (firstNumber) {
+        console.log('This is the 1st: ' + firstNumber); // loops through numbers and grabs the first index of the array
+        numbers.forEach(function (secondNumber) {
+            console.log('This is the 2nd: ' + secondNumber); // then loops through the whole array starting at first index
+            console.log('Sum of 1st + 2nd: ' + (firstNumber + secondNumber))
+            console.log('------------------------------------------------')
         })
+    })
 }
-printNumbersThenPairSums([1,2,3,4,5]);
+printNumbersThenPairSums([1, 2, 3, 4, 5]);
 
 // ------------------------------------------------------------------------------------
 // 9/22/2019
@@ -42,12 +42,12 @@ printNumbersThenPairSums([1,2,3,4,5]);
 // whether these contain any common items
 
 // For Example: 
-// const array1 = ['a', 'b', 'c', 'x'];
-// const array2 = ['z', 'y', 'i'];
+const array1 = ['a', 'b', 'c', 'x'];
+const array2 = ['z', 'y', 'i'];
 // should return false
 //--------------------
-const array1 = ['a', 'b', 'c', 'x'];
-const array2 = ['z', 'y', 'x'];
+// const array1 = ['a', 'b', 'c', 'x'];
+// const array2 = ['z', 'y', 'x'];
 // should return true
 
 // Using cheat sheet to solve problem.
@@ -56,11 +56,11 @@ const array2 = ['z', 'y', 'x'];
 // Step Two double check inputs/ outputs: arrays
 // Step Three: No size limit for array
 
-// brute force method to solve problem, O(n^2)
-function commonItems (arr1, arr2) {
+// Step 5 Use brute force method to solve problem
+function commonItems(arr1, arr2) {
     for (let i = 0; i < arr1.length; i++) { // loop through array1
         for (let j = 0; j < arr2.length; j++) { // loop through array2
-            if(arr1[i] === arr2[j]) { // check if there are any common items
+            if (arr1[i] === arr2[j]) { // check if there are any common items
                 return console.log('commonItems = ' + true);
             }
         }
@@ -69,3 +69,37 @@ function commonItems (arr1, arr2) {
 }
 
 commonItems(array1, array2);
+
+// Step 6: O(a * b), not efficient bc nested loops
+
+/*
+if  array1 is made into an object with indexs set to true,
+can compare both arrays more efficiently
+array2[index] === obj.properties
+*/
+
+function containsCommonItems(arr1, arr2) {
+    // loop through first array & create object where properties === items in the array
+    let map = {};
+    for (let i = 0; i < arr1.length; i = i + 1) {
+        if(!map[arr1[i]]) { // if map of current index doesn't exist
+        const item = arr1[i];
+        map[item] = true; // map[arr[i]] : true
+    }
+}
+// console.log(map)  //used console log to check for loop above
+
+// loop through 2nd array & check if item in 2nd exists on created object.
+    for (let j = 0; j< arr2.length; j = j +1) {
+        if (map[arr2[j]]) {
+            return console.log('containsCommonItems = ' + true);
+        }
+    }
+    return console.group('containsCommonItems = ' + false)
+}
+// 2 for loops not nested
+// O(a + b)
+
+containsCommonItems(array1, array2);
+
+//------------------------
