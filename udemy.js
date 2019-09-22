@@ -72,12 +72,15 @@ commonItems(array1, array2);
 
 // Step 6: O(a * b), not efficient bc nested loops
 
+// Step 8:
+// Step 9:
 /*
 if  array1 is made into an object with indexs set to true,
 can compare both arrays more efficiently
 array2[index] === obj.properties
 */
 
+// Step 10:
 function containsCommonItems(arr1, arr2) {
     // loop through first array & create object where properties === items in the array
     let map = {};
@@ -102,4 +105,8 @@ function containsCommonItems(arr1, arr2) {
 
 containsCommonItems(array1, array2);
 
+function containsCommonItems2(arr1, arr2) {
+    return console.log('containsCommonItems2 = ' + arr1.some(item => arr2.includes(item)))
+}
+containsCommonItems2(array1, array2)
 //------------------------
