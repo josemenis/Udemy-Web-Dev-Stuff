@@ -1,20 +1,20 @@
-// const nemo = ['nemo'];
-// const largeArray = new Array(10000).fill('nemo');
+const nemo = ['nemo'];
+const largeArray = new Array(100).fill('nemo');
 
-// function findNemo(array) {
-//     var t0 = performance.now();
+function findNemo(array) {
+    var t0 = performance.now();
 
-//     for (let index =  0; index < array.length; index++) {
-//         if (array[index] === 'nemo') {
-//             console.log('Found Nemo');
-//         }
-//     }
-//     var t1 = performance.now();
-//     console.log('This loop of the array took ' + (t1 - t0) +
-//     ' milliseconds ');
-// }
+    for (let index =  0; index < array.length; index++) {
+        if (array[index] === 'nemo') {
+            console.log('Found Nemo');
+        }
+    }
+    var t1 = performance.now();
+    console.log('This loop of the array took ' + (t1 - t0) +
+    ' milliseconds ');
+}
 
-// findNemo(largeArray);
+findNemo(largeArray);
 
 // --------------------------------------------------------------------------------
 function printNumbersThenPairSums(numbers) {
@@ -112,7 +112,7 @@ function containsCommonItems2(arr1, arr2) {
 containsCommonItems2(array1, array2)
 //------------------------
 
-// 9/23/2019
+// 9/23/2019 Section 4 How to solve coding problems
 // Andrei's code in JS for the Google Interview Video. Video had c++
 // Naive
 function hasPairWithSum(arr, sum){
@@ -144,6 +144,8 @@ function hasPairWithSum(arr, sum){
     return false;
   }
   
-  
   // hasPairWithSum([6,4,3,2,1,7], 9)
   hasPairWithSum2([6,4,3,2,1,7], 14)
+//--------------------------------------------------------
+
+// 9/23/19 section 6 Data Structures
