@@ -71,7 +71,7 @@ function commonItems(arr1, arr2) {
 commonItems(array1, array2);
 
 // Step 6: O(a * b), not efficient bc nested loops
-
+        // O(1) space complextiy bc we are not creating any variables just using the arrays.
 // Step 8:
 // Step 9:
 /*
@@ -101,7 +101,8 @@ function containsCommonItems(arr1, arr2) {
     return console.group('containsCommonItems = ' + false)
 }
 // 2 for loops not nested
-// O(a + b)
+// O(a + b) Time Complexity - this is faster than the other one
+// O(a) Space Complexity - this is more heavy for space because it creates an object
 
 containsCommonItems(array1, array2);
 
@@ -110,3 +111,39 @@ function containsCommonItems2(arr1, arr2) {
 }
 containsCommonItems2(array1, array2)
 //------------------------
+
+// 9/23/2019
+// Andrei's code in JS for the Google Interview Video. Video had c++
+// Naive
+function hasPairWithSum(arr, sum){
+    var len = arr.length;
+    for(var i =0; i<len-1; i++){
+      console.log(arr[i])
+      console.log('--------')
+       for(var j = i+1;j<len; j++){
+         console.log(arr[j])
+          if (arr[i] + arr[j] === sum)
+              return true;
+       }
+    }
+  
+    return false;
+  }
+  
+  // Better
+  function hasPairWithSum2(arr, sum){
+    const mySet = new Set();
+    const len = arr.length;
+    for (let i = 0; i < len; i++){
+      if (mySet.has(arr[i])) {
+        return true;
+      }
+      mySet.add(sum - arr[i]);
+      // console.log(arr[i])
+    }
+    return false;
+  }
+  
+  
+  // hasPairWithSum([6,4,3,2,1,7], 9)
+  hasPairWithSum2([6,4,3,2,1,7], 14)
