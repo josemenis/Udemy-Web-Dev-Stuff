@@ -196,4 +196,21 @@ class MyArray {
   myArray.shiftItems(0);
   console.log(myArray);
   
-  
+  //---------------------------------------
+  // REVERSE A STRING EXERCISE
+  function reverse(str){
+    var backwards = []; // create array to store reversed input
+    var tArrLength = str.length - 1; 
+    
+      for (let i = tArrLength; i >= 0 ; i--) {
+        backwards.push(str[i]); 
+      }
+        console.log(backwards); // console log outside of for loop
+        return console.log(backwards.join('')); //concatenates  backwards array
+    }
+    
+    function reverse2(str) {
+        return console.log(str.split('').reverse().join(''));
+    }
+    reverse('Almost figured this one out. Did not think about creating a array to store the reversed one.'); //string input when function is called
+    reverse2('Figured this one out. Did not think about creating a array to store the reversed one.'); //string input when function is called
