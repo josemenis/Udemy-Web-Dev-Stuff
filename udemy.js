@@ -1,20 +1,20 @@
-const nemo = ['nemo'];
-const largeArray = new Array(100).fill('nemo');
+// const nemo = ['nemo'];
+// const largeArray = new Array(100).fill('nemo');
 
-function findNemo(array) {
-    var t0 = performance.now();
+// function findNemo(array) {
+//     var t0 = performance.now();
 
-    for (let index =  0; index < array.length; index++) {
-        if (array[index] === 'nemo') {
-            console.log('Found Nemo');
-        }
-    }
-    var t1 = performance.now();
-    console.log('This loop of the array took ' + (t1 - t0) +
-    ' milliseconds ');
-}
+//     for (let index =  0; index < array.length; index++) {
+//         if (array[index] === 'nemo') {
+//             console.log('Found Nemo');
+//         }
+//     }
+//     var t1 = performance.now();
+//     console.log('This loop of the array took ' + (t1 - t0) +
+//     ' milliseconds ');
+// }
 
-findNemo(largeArray);
+// findNemo(largeArray);
 
 // --------------------------------------------------------------------------------
 function printNumbersThenPairSums(numbers) {
@@ -148,4 +148,52 @@ function hasPairWithSum(arr, sum){
   hasPairWithSum2([6,4,3,2,1,7], 14)
 //--------------------------------------------------------
 
-// 9/23/19 section 6 Data Structures
+// 9/24/19 section 6 Data Structures
+
+class MyArray {
+    constructor() {
+      this.length = 0;
+      this.data = {};
+    }
+    get(index) {
+      return this.data[index];
+      // console.log(this.data[index])
+    }
+    push(item) {
+      this.data[this.length] = item; //{0} = item;
+      this.length++; // increments array length everytime .push is called.
+      return item
+    }
+    pop() { // remove item from the end
+      const lastItem = this.data[this.length-1]; // sets the last index in array to lastItem
+      delete this.data[this.length-1]; // uses delete method to delete last index
+      this.length--; // decrease the length of the array
+      return lastItem; 
+    }
+    deleteAtIndex(index) {
+      const item = this.data[index];
+      this.shiftItems(index); // single responsibility principle to shift data
+      return item;
+    }
+    shiftItems(index) { // this function doesn't return anything bc it's part of another method
+      for (let i = index; i< this.length-1; i++) { // i is set to index, index is set when function is called
+      this.data[i] = this.data[i + 1]; //data is shifted left by 1 with this line of code.
+      }
+      delete this.data[this.length -1]; // deletes the last index of array
+      this.length--; //reduces length by 1 everytime this method is ran
+    }
+  }
+  
+  const myArray = new MyArray();
+    myArray.push('test')
+  myArray.push('you');
+  myArray.push('?!');
+  // myArray.pop();
+  // myArray.pop(0);
+  myArray.deleteAtIndex(2);
+  myArray.push('are');
+  myArray.push('nice');
+  myArray.shiftItems(0);
+  console.log(myArray);
+  
+  
