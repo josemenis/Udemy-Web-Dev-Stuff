@@ -214,3 +214,43 @@ class MyArray {
     }
     reverse('Almost figured this one out. Did not think about creating a array to store the reversed one.'); //string input when function is called
     reverse2('Figured this one out. Did not think about creating a array to store the reversed one.'); //string input when function is called
+
+    //---------------------------------------------------
+    //Merge Sorted Arrays
+
+    function m(array1, array2) {
+        const mergedArr = [];
+        // set index 0 for both arrays to a variable
+        let array1Item = array1[0];
+        let twoItem = array2[0];
+        let i = 0;
+        let j = 0;
+      
+      // Check input with below
+      if (array1.length === 0) {
+        return array2;
+      }
+      if (array2.length === 0) {
+        return mergedArr
+      }
+      
+      
+        while(array1Item || twoItem) {
+          if (!twoItem || array1Item < twoItem) {
+            console.log(array1Item, twoItem)
+            mergedArr.push(array1Item);
+            array1Item = array1[i];
+            i++
+          } else {
+            mergedArr.push(twoItem);
+            twoItem = array2[j];
+            j++
+          }
+        }
+        return console.log(mergedArr);
+        }
+      
+      m([0,3,4,31], [3,4,6,30]);
+      
+      
+      

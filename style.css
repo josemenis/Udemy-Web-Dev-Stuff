@@ -1,0 +1,26 @@
+/* Selector {
+    Propert: value;
+} */
+body {
+    /* set up a image!! */
+    background-image:url("image.jpg");
+    background-size: cover;
+}
+h2 {
+    color: red;
+    text-align: center;
+    border: 5px dashed purple;
+}
+
+p {
+    color: pink;
+
+}
+
+p {
+    color: green;
+}
+/* list-style in this case rids of bullet points */
+li {
+    list-style: none 
+}
