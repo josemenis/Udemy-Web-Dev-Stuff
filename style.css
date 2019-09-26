@@ -1,9 +1,10 @@
 /* Selector {
     Propert: value;
 } */
+
+/* REFER TO CSS TRICKS WEBSITE */
 body {
-    /* set up a image!! */
-    background-image:url("image.jpg");
+    background-image: url(https://images.unsplash.com/photo-1454779132693-e5cd0a216ed3?ixlib=rb-1.2.1&w=1000&q=80);
     background-size: cover;
 }
 h2 {
