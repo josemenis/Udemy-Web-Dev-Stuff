@@ -4,17 +4,26 @@
 
 /* REFER TO CSS TRICKS WEBSITE */
 body {
-    background-image: url(https://images.unsplash.com/photo-1454779132693-e5cd0a216ed3?ixlib=rb-1.2.1&w=1000&q=80);
+    /* seems that this image cannot find in another folder with relative path */
+    background-image: url(slider-background-2.jpg);
     background-size: cover;
 }
-h2 {
-    color: red;
+/* selects p directly after h2*/
+h2 + p {
+    color: #93002D;
     text-align: center;
-    border: 5px dashed purple;
+    border: 5px solid rgba(255, 176, 176, 0.5);
+    cursor: pointer;
 }
 
+/* selects p's within h2
+h2 p {
+
+} */
+
+
 p {
-    color: pink;
+    color: black !important; /* Don't use important*/
 
 }
 
@@ -23,5 +32,22 @@ p {
 }
 /* list-style in this case rids of bullet points */
 li {
-    list-style: none 
+    list-style: none; 
+    display: inline-block;
+}
+/* CLASS === . */
+.webText:first-child {
+    border: 5px solid green;
+}
+
+.active {
+    color: #93002D;
+}
+/* ID === # */
+#div1 {
+    background: rgba(0, 0, 255, 0.2);
+}
+
+#div2 {
+    background: rgba(255, 0, 0, 0.2);
 }
