@@ -9,7 +9,8 @@ body {
     background-size: cover;
 }
 /* selects p directly after h2*/
-h2 + p {
+/* h2 + p { */
+h2 {
     color: #93002D;
     text-align: center;
     border: 5px solid rgba(255, 176, 176, 0.5);
@@ -21,14 +22,18 @@ h2 p {
 
 } */
 
-
 p {
     color: black !important; /* Don't use important*/
 
 }
 
 p {
-    color: green;
+    font-size: 125%;
+    /* text-decoration: underline; */
+    font-style: italic;
+    font-weight: bold; 
+    /* , in font-family is for different computers that may not have fonts*/
+    font-family: 'Mansalva', cursive;
 }
 /* list-style in this case rids of bullet points */
 li {
@@ -50,4 +55,14 @@ li {
 
 #div2 {
     background: rgba(255, 0, 0, 0.2);
+}
+
+img {
+    float: left;
+
+}
+
+footer {
+    clear: both;
+    text-align: center;
 }

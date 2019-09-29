@@ -86,8 +86,10 @@ function containsCommonItems(arr1, arr2) {
     let map = {};
     for (let i = 0; i < arr1.length; i = i + 1) {
         if(!map[arr1[i]]) { // if map of current index doesn't exist
-        const item = arr1[i];
-        map[item] = true; // map[arr[i]] : true
+        const item = arr1[i]; //item is created during loop until
+        map[item] = true; // set items in map to true
+        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!1`);
+        console.log(map);
     }
 }
 // console.log(map)  //used console log to check for loop above
