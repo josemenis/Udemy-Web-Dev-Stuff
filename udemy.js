@@ -88,9 +88,7 @@ function containsCommonItems(arr1, arr2) {
         if(!map[arr1[i]]) { // if map of current index doesn't exist
         const item = arr1[i]; //item is created during loop until
         map[item] = true; // set items in map to true
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!1`);
-        console.log(map);
-    }
+      }
 }
 // console.log(map)  //used console log to check for loop above
 
@@ -146,7 +144,7 @@ function hasPairWithSum(arr, sum){
     return false;
   }
   
-  // hasPairWithSum([6,4,3,2,1,7], 9)
+  hasPairWithSum([6,4,3,2,1,7], 9)
   hasPairWithSum2([6,4,3,2,1,7], 14)
 //--------------------------------------------------------
 
@@ -253,6 +251,51 @@ class MyArray {
         }
       
       m([0,3,4,31], [3,4,6,30]);
+
+      //-----------------------------------------------------------
+      // 9/30/19 Data Structure Hash Table
+
+      class HashTable {
+        constructor(size){
+          this.data = new Array(size);
+          // this.data = [];
+        }
       
+        _hash(key) {
+          let hash = 0;
+          for (let i =0; i < key.length; i++){
+              hash = (hash + key.charCodeAt(i) * i) % this.data.length
+          }
+          return hash;
+        }
       
+        set(key, value) {
+          let address = this._hash(key); //address is set to hash function
+          if (!this.data[address]) { // if the array is empty
+            this.data[address] = []; // use this empty array
+          }
+          this.data[address].push([key, value]); // to push data into the array, using (key, value)
+          return this.data;
+        }
+      
+        get(key){ // gets data from the hashTable
+          const address = this._hash(key); //address is set to hash function
+          const currentBucket = this.data[address] // set a variable to the address of the array
+          if (currentBucket) { // if array exists 
+            for(let i = 0; i < currentBucket.length; i++){ // loop through it
+            console.log(currentBucket[i])
+      ;        if(currentBucket[i][0] === key) { // if key equal array[i] @ index [0]
+                return currentBucket[i][1]// return it [0] key or name, [1] value or number
+              }
+            }
+          }
+          return undefined; // else return undefined
+        }
+      }
+      
+      const myHashTable = new HashTable(50);
+      myHashTable.set('grapes', 10000)
+      myHashTable.get('grapes')
+      myHashTable.set('apples', 9)
+      myHashTable.get('apples')
       
