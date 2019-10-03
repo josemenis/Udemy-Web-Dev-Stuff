@@ -355,3 +355,45 @@ function firstRecurringCharacter2(input) {
 
 console.log(`-----------firstRecChar2----------------`);
 firstRecurringCharacter2([2, 5, 1, 2, 3, 5, 1, 2, 4]);
+
+// ----------------------LINKED LISTS-------------
+// 10/1/2019
+class LinkedList {
+  constructor (value) {
+    this.head = {
+      value: value,
+      next: null
+    }
+    this.tail = this.head;
+    this.length = 1;
+  }
+  append(value) {
+    const newNode = {
+      value: value,
+      next: null
+    }
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    console.log(this);
+    return
+  }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    console.log(this);
+    return
+  }
+}
+
+const myLinkedList = new LinkedList(10);
+
+console.log(`---------------myLinkedList------------`);
+myLinkedList.append(5);
+myLinkedList.append(16);
+myLinkedList.prepend(1);
