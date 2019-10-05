@@ -342,7 +342,7 @@ function firstRecurringCharacter2(input) {
   for (let i = 0; i < input.length; i++) {
 
     // console.log(map[input[i]]); // since <if (map[input[i]])> logs undefined change logic to <if (map[input[i]] !== undefined)>
-    
+
     if (map[input[i]] !== undefined) { // if map contains input,
       return console.log(input[i]);
     } else {
@@ -359,24 +359,24 @@ firstRecurringCharacter2([2, 5, 1, 2, 3, 5, 1, 2, 4]);
 // ----------------------LINKED LISTS-------------
 // 10/1/2019
 class LinkedList {
-  constructor (value) {
-    this.head = {
-      value: value,
-      next: null
-    }
-    this.tail = this.head;
-    this.length = 1;
+  constructor(value) {
+      this.head = {
+          value: value,
+          next: null
+      };
+      this.tail = this.head;
+      this.length = 1;
   }
   append(value) {
     const newNode = {
       value: value,
       next: null
     }
+    console.log(newNode)
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
-    console.log(this);
-    return
+    return this;
   }
   prepend(value) {
     const newNode = {
@@ -386,14 +386,197 @@ class LinkedList {
     newNode.next = this.head;
     this.head = newNode;
     this.length++;
-    console.log(this);
-    return
+    return this;
+  }
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while(currentNode !== null){
+        array.push(currentNode.value)
+        currentNode = currentNode.next
+    }
+    return array;
+  }
+  insert(index, value){
+    //Check for proper parameters;
+    if(index >= this.length) {
+      console.log('yes')
+      return this.append(value);
+    }
+    
+    const newNode = {
+      value: value,
+      next: null
+    }
+    const leader = this.traverseToIndex(index-1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this.printList();
+  }
+  traverseToIndex(index) {
+    //Check parameters
+    let counter = 0;
+    let currentNode = this.head;
+    while(counter !== index){
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  remove(index) {
+    // Check Parameters      
+    const leader = this.traverseToIndex(index-1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
+  }
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    console.log('print list before reversing: ',this.printList());
+    let first = this.head;
+    console.log('first: ', first);
+    this.tail = this.head;
+    console.log('tail: ',this.tail);
+    let second = first.next;
+    console.log('second: ', second);
+    //while first.next equals true
+    while(second) { 
+      const temp = second.next;
+      console.log('-----------------')
+      console.log('temp: ', temp);
+      second.next = first;
+      console.log('second.next: ', second.next);
+      first = second;
+      console.log('first: ', first);
+      second = temp;
+      console.log('second: ', second);
+    }
+
+    this.head.next = null;
+    console.log('head.next: ', this.head.next);
+    this.head = first;
+    console.log('t.head: ', this.head);
+    return console.log(this.printList());
   }
 }
 
-const myLinkedList = new LinkedList(10);
+let myLinkedList = new LinkedList(10);
 
 console.log(`---------------myLinkedList------------`);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
+myLinkedList.printList()
+myLinkedList.insert(2, 99)
+myLinkedList.insert(20, 88)
+myLinkedList.printList()
+myLinkedList.remove(2)
+myLinkedList.reverse()
+
+//-----------------------------------------
+class DLL {
+  constructor(value) {
+    this.head = {
+      value: value,
+      next: null,
+      previous: null //-----
+    };
+    this.tail = this.head;
+    this.length = 1;
+  }
+  append(value) {
+    const newNode = {
+      value: value,
+      next: null,
+      previous: null //------
+    }
+    newNode.previous = this.tail; //----
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null,
+      previous: null //----
+    }
+    newNode.next = this.head;
+    this.head.previous = newNode; //----
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    return array;
+  }
+  insert(index, value) {
+    //Check for proper parameters;
+    if (index >= this.length) {
+      console.log('yes')
+      return this.append(value);
+    }
+
+    const newNode = {
+      value: value,
+      next: null,
+      previous: null
+    }
+    const leader = this.traverseToIndex(index - 1);
+    const follower = leader.next;
+    leader.next = newNode;
+    newNode.prev = leader; //---------
+    newNode.next = follower;
+    follower.prev = newNode; //---------
+    this.length++;
+    return this.printList();
+  }
+  traverseToIndex(index) {
+    //Check parameters
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  remove(index) {
+    // Check Parameters      
+    const leader = this.traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    leader.next.prev = leader; //--------
+    // console.log('printed list: ', this.printList())
+    // console.log('this is', leader.next.prev) 
+    this.length--;
+    return this.printList();
+  }
+  
+}
+
+console.log(`----------DLL------------------`)
+let doubleLL = new DLL(10);
+doubleLL.append(5);
+doubleLL.append(16);
+doubleLL.prepend(1);
+doubleLL.insert(2, 99);
+doubleLL.insert(20, 88);
+console.log(doubleLL.printList());
+doubleLL.remove(2);
+console.log(doubleLL.printList());
+
+
+
