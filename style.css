@@ -50,7 +50,7 @@ li {
 }
 /* ID === # */
 #div1 {
-                /* top, bottom, left, right */
+                /* top, right, down, left */
     background: rgba(0, 0, 255, 0.2);
 }
 

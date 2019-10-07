@@ -579,4 +579,161 @@ doubleLL.remove(2);
 console.log(doubleLL.printList());
 
 
+// --------------Exercise implement STACK with LINKED LIST --------
 
+class Node {
+  constructor(value){
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LLStack {
+  constructor(){
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  peek() {
+      return this.top;
+  }
+  push(value){
+    // need to be able to push a value onto LList
+    const node = new Node (value);
+    if (this.length === 0) {
+      this.top = node;
+      this.bottom = node;
+    } else {
+    let holdPointer = this.top; 
+    this.top = node;
+    this.top.next = holdPointer;
+    }
+    this.length ++;
+    return this
+  } 
+
+  pop(){
+    // be able to remove value by method from LList
+    if (!this.top) {
+      return null;
+    }   
+    if (this.top === this.bottom) {
+      this.bottom = null;
+    }
+    // hold pointer is used bc JS is a garbage collecting language. Anything not referred to is thrown away.
+    const holdPointer = this.top; 
+    this.top = this.top.next;
+    this.length --;
+    return this
+  } 
+  // isEmpty
+
+}
+
+const linkListStack = new LLStack();
+// Discord
+// Udemy
+// google
+console.log('----linkListStack with Linked List--------------');
+console.log(
+linkListStack.push('Google'),
+linkListStack.push('Discord'),
+linkListStack.push('Udemy'),
+linkListStack.peek(),
+linkListStack.pop(),
+linkListStack.pop(),
+linkListStack.pop()
+);
+
+// -----STACK WITH ARRAY -------------------------
+
+class arrStack {
+  constructor(){
+  this.array = [];
+  }
+  peek() {
+    return this.array[this.array.length -1];
+  }
+  push(element){
+    this.array.push(element);
+    return this; 
+  }
+  pop(){
+    if (this.array.length === 0){
+      return "Underflow";
+    }
+    this.array.pop();
+    return this; 
+}
+  isEmpty() {
+    return this.isEmpty.length === 0;
+  }
+}
+
+const arrayStack = new arrStack();
+console.log('------------arrayStack with an Array---------')
+console.log(
+arrayStack.peek(),
+arrayStack.push('google'),
+arrayStack.push('udemy'),
+arrayStack.push('discord'),
+arrayStack.pop(),
+arrayStack.pop(),
+arrayStack.pop(),
+// arrayStack.peek()
+);
+//-----------------QUEUE with Linked List-------------
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+class Queue {
+  constructor(){
+    this.first = null;
+    this.last = null;
+    this.length = 0;
+  }
+  peek() {
+    return this.first;
+  }
+  enqueue(value){
+    const node = new Node(value);
+    if (this.length === 0){
+      this.first = node;
+      this.last = node;
+    } else {
+      this.last.next = node;
+      this.last = node;
+    }
+    this.length ++;
+    return this;
+  }
+  dequeue(){
+    if (!this.first){
+      return null;
+    }
+    if (this.first === this.last){
+      this.last = null;
+    }
+    const holdPointer = this.first;
+    this.first = this.first.next;
+    this.length --;
+    return this;
+  }
+  //isEmpty;
+}
+
+const myQueue = new Queue();
+console.log('------------myQueue Linked List ------------')
+console.log(
+myQueue.enqueue('Joy'),
+myQueue.enqueue('Matt'),
+myQueue.enqueue('Pavel'),
+myQueue.peek(),
+myQueue.dequeue(),
+myQueue.dequeue(),
+myQueue.dequeue(),
+);
