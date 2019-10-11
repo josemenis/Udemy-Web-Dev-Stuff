@@ -219,14 +219,14 @@ reverse2('Figured this one out. Did not think about creating a array to store th
 
 //---------------------------------------------------
 //Merge Sorted Arrays
-
 function m(array1, array2) {
   const mergedArr = [];
   // set index 0 for both arrays to a variable
   let array1Item = array1[0];
   let twoItem = array2[0];
-  let i = 0;
-  let j = 0;
+  // set to equal 1 otherwise double inputs of index[0]
+  let i = 1;
+  let j = 1;
 
   // Check input with below
   if (array1.length === 0) {
@@ -286,7 +286,7 @@ class HashTable {
     if (currentBucket) { // if array exists 
       for (let i = 0; i < currentBucket.length; i++) { // loop through it
         // console.log(currentBucket[i]);
-        ; if (currentBucket[i][0] === key) { // if key equal array[i] @ index [0]
+        if (currentBucket[i][0] === key) { // if key equal array[i] @ index [0]
           return currentBucket[i][1]// return it [0] key or name, [1] value or number
         }
       }
@@ -360,12 +360,12 @@ firstRecurringCharacter2([2, 5, 1, 2, 3, 5, 1, 2, 4]);
 // 10/1/2019
 class LinkedList {
   constructor(value) {
-      this.head = {
-          value: value,
-          next: null
-      };
-      this.tail = this.head;
-      this.length = 1;
+    this.head = {
+      value: value,
+      next: null
+    };
+    this.tail = this.head;
+    this.length = 1;
   }
   append(value) {
     const newNode = {
@@ -391,24 +391,24 @@ class LinkedList {
   printList() {
     const array = [];
     let currentNode = this.head;
-    while(currentNode !== null){
-        array.push(currentNode.value)
-        currentNode = currentNode.next
+    while (currentNode !== null) {
+      array.push(currentNode.value)
+      currentNode = currentNode.next
     }
     return array;
   }
-  insert(index, value){
+  insert(index, value) {
     //Check for proper parameters;
-    if(index >= this.length) {
+    if (index >= this.length) {
       console.log('yes')
       return this.append(value);
     }
-    
+
     const newNode = {
       value: value,
       next: null
     }
-    const leader = this.traverseToIndex(index-1);
+    const leader = this.traverseToIndex(index - 1);
     const holdingPointer = leader.next;
     leader.next = newNode;
     newNode.next = holdingPointer;
@@ -419,7 +419,7 @@ class LinkedList {
     //Check parameters
     let counter = 0;
     let currentNode = this.head;
-    while(counter !== index){
+    while (counter !== index) {
       currentNode = currentNode.next;
       counter++;
     }
@@ -427,7 +427,7 @@ class LinkedList {
   }
   remove(index) {
     // Check Parameters      
-    const leader = this.traverseToIndex(index-1);
+    const leader = this.traverseToIndex(index - 1);
     const unwantedNode = leader.next;
     leader.next = unwantedNode.next;
     this.length--;
@@ -437,15 +437,15 @@ class LinkedList {
     if (!this.head.next) {
       return this.head;
     }
-    console.log('print list before reversing: ',this.printList());
+    console.log('print list before reversing: ', this.printList());
     let first = this.head;
     console.log('first: ', first);
     this.tail = this.head;
-    console.log('tail: ',this.tail);
+    console.log('tail: ', this.tail);
     let second = first.next;
     console.log('second: ', second);
     //while first.next equals true
-    while(second) { 
+    while (second) {
       const temp = second.next;
       console.log('-----------------')
       console.log('temp: ', temp);
@@ -564,7 +564,7 @@ class DLL {
     this.length--;
     return this.printList();
   }
-  
+
 }
 
 console.log(`----------DLL------------------`)
@@ -582,50 +582,50 @@ console.log(doubleLL.printList());
 // --------------Exercise implement STACK with LINKED LIST --------
 
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
 class LLStack {
-  constructor(){
+  constructor() {
     this.top = null;
     this.bottom = null;
     this.length = 0;
   }
   peek() {
-      return this.top;
+    return this.top;
   }
-  push(value){
+  push(value) {
     // need to be able to push a value onto LList
-    const node = new Node (value);
+    const node = new Node(value);
     if (this.length === 0) {
       this.top = node;
       this.bottom = node;
     } else {
-    let holdPointer = this.top; 
-    this.top = node;
-    this.top.next = holdPointer;
+      let holdPointer = this.top;
+      this.top = node;
+      this.top.next = holdPointer;
     }
-    this.length ++;
+    this.length++;
     return this
-  } 
+  }
 
-  pop(){
+  pop() {
     // be able to remove value by method from LList
     if (!this.top) {
       return null;
-    }   
+    }
     if (this.top === this.bottom) {
       this.bottom = null;
     }
     // hold pointer is used bc JS is a garbage collecting language. Anything not referred to is thrown away.
-    const holdPointer = this.top; 
+    const holdPointer = this.top;
     this.top = this.top.next;
-    this.length --;
+    this.length--;
     return this
-  } 
+  }
   // isEmpty
 
 }
@@ -636,35 +636,35 @@ const linkListStack = new LLStack();
 // google
 console.log('----linkListStack with Linked List--------------');
 console.log(
-linkListStack.push('Google'),
-linkListStack.push('Discord'),
-linkListStack.push('Udemy'),
-linkListStack.peek(),
-linkListStack.pop(),
-linkListStack.pop(),
-linkListStack.pop()
+  linkListStack.push('Google'),
+  linkListStack.push('Discord'),
+  linkListStack.push('Udemy'),
+  linkListStack.peek(),
+  linkListStack.pop(),
+  linkListStack.pop(),
+  linkListStack.pop()
 );
 
 // -----STACK WITH ARRAY -------------------------
 
 class arrStack {
-  constructor(){
-  this.array = [];
+  constructor() {
+    this.array = [];
   }
   peek() {
-    return this.array[this.array.length -1];
+    return this.array[this.array.length - 1];
   }
-  push(element){
+  push(element) {
     this.array.push(element);
-    return this; 
+    return this;
   }
-  pop(){
-    if (this.array.length === 0){
+  pop() {
+    if (this.array.length === 0) {
       return "Underflow";
     }
     this.array.pop();
-    return this; 
-}
+    return this;
+  }
   isEmpty() {
     return this.isEmpty.length === 0;
   }
@@ -673,14 +673,14 @@ class arrStack {
 const arrayStack = new arrStack();
 console.log('------------arrayStack with an Array---------')
 console.log(
-arrayStack.peek(),
-arrayStack.push('google'),
-arrayStack.push('udemy'),
-arrayStack.push('discord'),
-arrayStack.pop(),
-arrayStack.pop(),
-arrayStack.pop(),
-// arrayStack.peek()
+  arrayStack.peek(),
+  arrayStack.push('google'),
+  arrayStack.push('udemy'),
+  arrayStack.push('discord'),
+  arrayStack.pop(),
+  arrayStack.pop(),
+  arrayStack.pop(),
+  // arrayStack.peek()
 );
 //-----------------QUEUE with Linked List-------------
 // class Node {
@@ -691,7 +691,7 @@ arrayStack.pop(),
 // }
 
 class Queue {
-  constructor(){
+  constructor() {
     this.first = null;
     this.last = null;
     this.length = 0;
@@ -699,28 +699,28 @@ class Queue {
   peek() {
     return this.first;
   }
-  enqueue(value){
+  enqueue(value) {
     const node = new Node(value);
-    if (this.length === 0){
+    if (this.length === 0) {
       this.first = node;
       this.last = node;
     } else {
       this.last.next = node;
       this.last = node;
     }
-    this.length ++;
+    this.length++;
     return this;
   }
-  dequeue(){
-    if (!this.first){
+  dequeue() {
+    if (!this.first) {
       return null;
     }
-    if (this.first === this.last){
+    if (this.first === this.last) {
       this.last = null;
     }
     const holdPointer = this.first;
     this.first = this.first.next;
-    this.length --;
+    this.length--;
     return this;
   }
   //isEmpty;
@@ -729,11 +729,11 @@ class Queue {
 const myQueue = new Queue();
 console.log('------------myQueue Linked List ------------')
 console.log(
-myQueue.enqueue('Joy'),
-myQueue.enqueue('Matt'),
-myQueue.enqueue('Pavel'),
-myQueue.peek(),
-myQueue.dequeue(),
-myQueue.dequeue(),
-myQueue.dequeue(),
+  myQueue.enqueue('Joy'),
+  myQueue.enqueue('Matt'),
+  myQueue.enqueue('Pavel'),
+  myQueue.peek(),
+  myQueue.dequeue(),
+  myQueue.dequeue(),
+  myQueue.dequeue(),
 );
