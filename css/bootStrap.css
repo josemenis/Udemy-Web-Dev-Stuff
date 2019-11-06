@@ -21,6 +21,7 @@ hr {
   max-width: 65px;
 }
 
+
 .buffer {
   height: 10rem;
 }
@@ -37,7 +38,7 @@ hr {
 }
 
 .btn-primary:hover {
-  background-color: #ee4b08;
+  background-color: #121622;
   border-color: #ee4b08;
   border-width: 4px;
 }
