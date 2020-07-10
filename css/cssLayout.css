@@ -1,5 +1,6 @@
 body {
     margin: auto 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .zone {
     /*
@@ -23,11 +24,24 @@ body {
 }
 
 /* Navigation Bar */
+.makeNavSticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 .main-nav {
     display: flex;
     list-style: none;
     font-size: 0.7em;
     margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-nav {
+        font-size: 0.5em;
+        padding: 0;
+    }
 }
 
 .push {
@@ -41,6 +55,18 @@ li {
 a {
     color: white;
     text-decoration: none;
+}
+
+/* Cover - Keep things in the center */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh       /* Veiwport height, always a percentage for height */
+}
+
+.cover {
+    width: 20rem;
 }
 
 /*https://paulund.co.uk/how-to-create-shiny-css-buttons*/
