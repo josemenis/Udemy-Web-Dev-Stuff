@@ -1,0 +1,24 @@
+/* 
+* - ALL
+# - id
+. - class
+element
+element, element
+element element
+element > element
+element + element
+:hover
+:last-child
+:first-child
+!important
+*/
+
+body{
+	background-color: #EAEBEB;
+}
+nav{
+	text-align: center;
+	font-size: 2rem;
+	color: blue;
+	border-bottom: 5px solid black;
+}
