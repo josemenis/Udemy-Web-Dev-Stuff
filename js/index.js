@@ -103,3 +103,10 @@ for (let i=0; i < todoLength; i++){
     todos.pop();
 };
 console.log(todos);
+////////////////////////////////////////////////////
+// Nonsense Event Handler 
+let navEvent = document.getElementById("eventTest");
+
+navEvent.addEventListener("click", function(){
+    console.log("About Was clicked!!");
+})
