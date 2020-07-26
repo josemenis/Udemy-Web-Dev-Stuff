@@ -16,10 +16,13 @@ adds the delete button next to it (hint: be sure to check
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
+var newButton = document.createElement("button");
+var list = document.createElement("li");
+var li = document.querySelectorAll("li");
+
 //-----------------------------------------------------------------------
 // 1. Select all li elements & loop through them. If one is clicked apply 
 // toggle function.
-var li = document.querySelectorAll("li");
 for (var i = 0; i < li.length; i++) {
 	li[i].addEventListener("click", toggle);
   };
@@ -33,17 +36,16 @@ function inputLength() {
 }
 
 function createListElement() {
-	var li = document.createElement("li");
-	li.appendChild(document.createTextNode(input.value));
-	ul.appendChild(li);
+	list.appendChild(document.createTextNode(input.value));
+	ul.appendChild(list);
 	input.value = "";
 
 
-	var newButton = document.createElement("button");
 	//newButton.classList.add('remove');
 	newButton.onclick = removeThis; // added onclick handler
 	newButton.appendChild(document.createTextNode("REMOVE"));
-	li.appendChild(newButton);
+	list.appendChild(newButton);
+	list.addEventListener("click", toggle);
 }
 // REMOVE FUNCTION
 function removeThis() {
