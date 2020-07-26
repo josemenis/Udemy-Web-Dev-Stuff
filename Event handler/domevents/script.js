@@ -22,12 +22,12 @@ var ul = document.querySelector("ul");
 var li = document.querySelectorAll("li");
 for (var i = 0; i < li.length; i++) {
 	li[i].addEventListener("click", toggle);
-  }
+  };
   
-  function toggle() {
+function toggle() {
 	this.classList.toggle("done");
-  }
-//------------------------------------------------------------------------
+}
+//----------------------------------------------
 function inputLength() {
 	return input.value.length;
 }
@@ -37,7 +37,18 @@ function createListElement() {
 	li.appendChild(document.createTextNode(input.value));
 	ul.appendChild(li);
 	input.value = "";
+
+
+	var newButton = document.createElement("button");
+	//newButton.classList.add('remove');
+	newButton.onclick = removeThis; // added onclick handler
+	newButton.appendChild(document.createTextNode("REMOVE"));
+	li.appendChild(newButton);
 }
+// REMOVE FUNCTION
+function removeThis() {
+	this.parentNode.remove();
+  }
 
 function addListAfterClick() {
 	if (inputLength() > 0) {
