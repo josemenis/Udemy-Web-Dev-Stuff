@@ -17,40 +17,26 @@ var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
 var newButton = document.createElement("button");
-var list = document.createElement("li");
 var li = document.querySelectorAll("li");
+var oneLi = document.querySelector("li");
+var deleteBtns = document.getElementsByClassName("delete");
 
-//-----------------------------------------------------------------------
-// 1. Select all li elements & loop through them. If one is clicked apply 
-// toggle function.
-for (var i = 0; i < li.length; i++) {
-	li[i].addEventListener("click", toggle);
-  };
-  
-function toggle() {
-	this.classList.toggle("done");
-}
-//----------------------------------------------
 function inputLength() {
 	return input.value.length;
 }
 
 function createListElement() {
+	var list = document.createElement("li");
 	list.appendChild(document.createTextNode(input.value));
 	ul.appendChild(list);
 	input.value = "";
-
-
-	//newButton.classList.add('remove');
+	// add a button to the new item created, but doesn't work
+	// properly with multiple items added before deleting
 	newButton.onclick = removeThis; // added onclick handler
 	newButton.appendChild(document.createTextNode("REMOVE"));
 	list.appendChild(newButton);
 	list.addEventListener("click", toggle);
 }
-// REMOVE FUNCTION
-function removeThis() {
-	this.parentNode.remove();
-  }
 
 function addListAfterClick() {
 	if (inputLength() > 0) {
@@ -64,6 +50,29 @@ function addListAfterKeypress(event) {
 	}
 }
 
-button.addEventListener("click", addListAfterClick);
+// 1. Select all li elements & loop through them. If one is clicked apply 
+// toggle function.
+function toggleEvent() {
+	for (var i = 0; i < li.length; i++) {
+		li[i].addEventListener("click", toggle);
+	  };
+}
 
+function toggle() {
+	this.classList.toggle("done");
+}
+// 2. Grab elements by class, loop through the list and add event removeThis
+function removeCurrentItems() {
+	for(var i = 0; i < deleteBtns.length; i++){
+		deleteBtns[i].addEventListener("click", removeThis);
+	}
+};
+// REMOVE FUNCTION
+function removeThis() {
+	this.parentNode.remove();
+  }
+  
+button.addEventListener("click", addListAfterClick);
 input.addEventListener("keypress", addListAfterKeypress);
+toggleEvent();
+removeCurrentItems();
