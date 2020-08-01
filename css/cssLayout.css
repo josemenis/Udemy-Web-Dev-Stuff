@@ -2,6 +2,10 @@ body {
     margin: auto 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+/* For scrolling to footer and up when link is clicked*/
+html {
+    scroll-behavior: smooth;
+  }
 .zone {
     /*
     padding:30px 50px;
